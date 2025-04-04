@@ -26,12 +26,16 @@ export const MessagesList = () => {
       } p-8 overflow-y-auto flex flex-col space-y-8 bg-transparent opacity-80`}
       ref={container}
     >
+      <img
+        src="https://www.impactoverse.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcolored_white.279e09d9.png&w=256&q=75"
+        alt=""
+      />
       {messages.length === 0 && (
         <div className="h-full w-full grid place-content-center text-center">
-          <h2 className="text-8xl font-bold text-white/90">
-            Your Personal Expert Guide
+          <h2 className="text-7xl font-bold text-white/90">
+            YOUR PERSONAL EXPERT GUIDE
             <br />
-            Impact Made Fun and Easy
+            Impact Made Fun and Easy !
           </h2>
           <h2 className="text-8xl font-bold font-jp text-red-600/90 italic"></h2>
         </div>
