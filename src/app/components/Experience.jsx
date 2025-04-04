@@ -5,6 +5,7 @@ import {
   Box,
   CameraControls,
   Environment,
+  Float,
   Gltf,
   Html,
   OrbitControls,
@@ -29,18 +30,23 @@ function Experience() {
 
         <Environment preset="sunset" />
         <ambientLight intensity={0.8} color="pink" />
-        <Html position={[0.22, 0.192, -3]} transform distanceFactor={0.5}>
-          <MessagesList />
-          <BoardSetting />
-        </Html>
-        <Teacher
-          key={teacher}
-          teacher={teacher}
-          position={[-1, -1.7, -3]}
-          scale={1.5}
-          rotation-y={degToRad(20)}
-        />
-        <Gltf src="/models/classroom_default.glb" position={[0.2, -1.7, -1]} />
+        <Float speed={0.5} floatIntensity={0.2} rotationIntensity={0.1}>
+          <Html position={[0.22, 0.192, -3]} transform distanceFactor={0.5}>
+            <MessagesList />
+            <BoardSetting />
+          </Html>
+          <Teacher
+            key={teacher}
+            teacher={teacher}
+            position={[-1, -1.7, -3]}
+            scale={1.5}
+            rotation-y={degToRad(20)}
+          />
+          <Gltf
+            src="/models/classroom_default.glb"
+            position={[0.2, -1.7, -1]}
+          />
+        </Float>
       </Canvas>
     </div>
   );
@@ -74,13 +80,13 @@ const CameraManager = () => {
     }
   }, [loading]);
 
-  useControls("Helper", {
-    getCameraPosition: button(() => {
-      const position = controls.current.getPosition();
-      const zoom = controls.current.camera.zoom;
-      console.log(...position, zoom);
-    }),
-  });
+  // useControls("Helper", {
+  //   getCameraPosition: button(() => {
+  //     const position = controls.current.getPosition();
+  //     const zoom = controls.current.camera.zoom;
+  //     console.log(...position, zoom);
+  //   }),
+  // });
 
   const handleZoom = (zoomIn = true) => {
     if (cameraRef.current) {

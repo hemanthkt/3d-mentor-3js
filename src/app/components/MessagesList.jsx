@@ -29,13 +29,11 @@ export const MessagesList = () => {
       {messages.length === 0 && (
         <div className="h-full w-full grid place-content-center text-center">
           <h2 className="text-8xl font-bold text-white/90 italic">
-            AI Mentor
+            Your Personal Expert Guide
             <br />
-            Impactoverse Study Session
+            Impact Made Fun and Easy
           </h2>
-          <h2 className="text-8xl font-bold font-jp text-red-600/90 italic">
-            Impact Made Fun & Easy.
-          </h2>
+          <h2 className="text-8xl font-bold font-jp text-red-600/90 italic"></h2>
         </div>
       )}
       {messages.map((message, i) => (

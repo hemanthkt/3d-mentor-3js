@@ -4,7 +4,7 @@ import { useAITeacher } from "../hooks/useAITeacher";
 import { useEffect, useRef, useState } from "react";
 import { MathUtils, MeshStandardMaterial } from "three";
 import { randInt } from "three/src/math/MathUtils";
-export const teachers = ["Abbi", "Alfie"];
+export const teachers = ["Abbi", "Alfie", "Elliot"];
 const ANIMATION_FADE_TIME = 0.5;
 
 export function Teacher({ teacher, ...props }) {
