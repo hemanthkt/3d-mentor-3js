@@ -28,7 +28,7 @@ export const MessagesList = () => {
     >
       {messages.length === 0 && (
         <div className="h-full w-full grid place-content-center text-center">
-          <h2 className="text-8xl font-bold text-white/90 italic">
+          <h2 className="text-8xl font-bold text-white/90">
             Your Personal Expert Guide
             <br />
             Impact Made Fun and Easy
