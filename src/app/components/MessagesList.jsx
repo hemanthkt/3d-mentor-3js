@@ -35,7 +35,7 @@ export const MessagesList = () => {
           <h2 className="text-7xl font-bold text-white/90">
             YOUR PERSONAL EXPERT GUIDE
             <br />
-            Impact Made Fun and Easy !
+            Impact Made Fun and Easy!
           </h2>
           <h2 className="text-8xl font-bold font-jp text-red-600/90 italic"></h2>
         </div>

@@ -43,6 +43,7 @@ export const useAITeacher = create((set, get) => ({
     message.answer = data.message;
     set(() => ({
       currentMessages: message,
+      currentQuestion: question,
     }));
     set((state) => ({
       messages: [...state.messages, message],
