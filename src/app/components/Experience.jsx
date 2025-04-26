@@ -17,6 +17,7 @@ import { MessagesList } from "./MessagesList";
 import { BoardSetting } from "./BoardSetting";
 import { button, useControls } from "leva";
 import { useAITeacher } from "../hooks/useAITeacher";
+import RecordingView from "./RecordingView";
 
 function Experience() {
   const teacher = useAITeacher((state) => state.teacher);
@@ -24,7 +25,9 @@ function Experience() {
     <div className="h-screen w-full">
       <div className="z-10 md:justify-center fixed bottom-4 left-4 right-4 flex gap-3 flex-wrap justify-stretch">
         <TypingBox />
+        <RecordingView />
       </div>
+
       <Canvas camera={{ position: [0, 0, 0.0001] }}>
         <CameraManager />
 
