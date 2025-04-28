@@ -17,6 +17,7 @@ import { MessagesList } from "./MessagesList";
 import { BoardSetting } from "./BoardSetting";
 import { button, useControls } from "leva";
 import { useAITeacher } from "../hooks/useAITeacher";
+import Navbar from "./Navbar";
 
 function Experience() {
   const teacher = useAITeacher((state) => state.teacher);
