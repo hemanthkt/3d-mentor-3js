@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function ContentModal() {
   const [chatData, setChatData] = useState([]);
 
-  useEffect(() => {
+  function refresh() {
     const fetchChats = async () => {
       const res = await fetch("/api/history");
       if (res.ok) {
@@ -13,6 +13,18 @@ export default function ContentModal() {
     };
 
     fetchChats();
+  }
+
+  useEffect(() => {
+    refresh();
+    let interval = setInterval(() => {
+      refresh();
+      console.log("useffect is calling eveery 10 second");
+    }, 10 * 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
