@@ -1,5 +1,6 @@
 import { Noto_Sans_JP, Roboto } from "next/font/google";
 import "./globals.css";
+import { NextAuthProvider } from "./Providers";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${roboto.variable} ${notoSansJP.variable}`}>
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <NextAuthProvider>{children}</NextAuthProvider>
+      </body>
     </html>
   );
 }
