@@ -24,10 +24,12 @@ export const useAITeacher = create((set, get) => ({
     }));
   },
   loading: false,
+
   askAI: async (question) => {
     if (!question) {
       return;
     }
+    // here is the question from the user
     const message = {
       question,
       id: get().messages.length,
@@ -39,8 +41,20 @@ export const useAITeacher = create((set, get) => ({
     const res = await fetch(`/api/ai?question=${question}`);
     const data = await res.json();
     console.log(data);
-
+    // here is the nswer form ai
     message.answer = data.message;
+    console.log("Question: ", question, "Answer: ", data.message);
+
+    // Saving question and answer to mongodb
+    await fetch("/api/modal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        question,
+        answer: data.message,
+      }),
+    });
+
     set(() => ({
       currentMessages: message,
     }));
@@ -50,6 +64,7 @@ export const useAITeacher = create((set, get) => ({
     }));
     get().playMessage(message);
   },
+
   playMessage: async (message) => {
     set(() => ({
       currentMessages: message,
