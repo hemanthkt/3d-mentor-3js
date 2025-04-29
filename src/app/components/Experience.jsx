@@ -18,11 +18,16 @@ import { BoardSetting } from "./BoardSetting";
 import { button, useControls } from "leva";
 import { useAITeacher } from "../hooks/useAITeacher";
 import Navbar from "./Navbar";
+import ContentModal from "../pages/ContentModal";
 
 function Experience() {
   const teacher = useAITeacher((state) => state.teacher);
   return (
     <div className="h-screen w-full">
+      <div className="absolute  p-16 flex justify-end w-full">
+        <ContentModal />
+      </div>
+
       <div className="z-10 md:justify-center fixed bottom-4 left-4 right-4 flex gap-3 flex-wrap justify-stretch">
         <TypingBox />
       </div>
