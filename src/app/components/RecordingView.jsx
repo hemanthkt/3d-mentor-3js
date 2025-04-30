@@ -1,15 +1,17 @@
 import { Mic, Pause } from "lucide-react";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { useTranscriptStore } from "../hooks/useTranscriptStore";
 
 // @ts-ignore
 window.webkitSpeechRecognition =
   window.webkitSpeechRecognition || window.SpeechRecognition;
 
 export default function RecordingView() {
+  const setTranscript = useTranscriptStore((state) => state.setTranscript);
   const [isRecording, setIsRecording] = useState(false);
   const [recordingComplete, setRecordingComplete] = useState(false);
-  const [transcript, setTranscript] = useState("");
+  // const [transcript, setTranscript] = useState("");
 
   const recognitionRef = useRef(null);
 
@@ -52,31 +54,31 @@ export default function RecordingView() {
 
   return (
     <div>
-      {(isRecording || transcript) && (
+      {/* {(isRecording || transcript) && (
         <div>
           <p>{recordingComplete ? "Recorded" : "Recording"}</p>
           <p>{recordingComplete ? "Thnaks for talking" : "Start Speaking"}</p>
         </div>
-      )}
+      )} */}
 
-      {isRecording && (
+      {/* {isRecording && (
         <div className="rounded-full w-4 h-4 bg-red-500 animate-pulse"></div>
-      )}
+      )} */}
 
-      {transcript && <p>{transcript}</p>}
+      {/* {transcript && <p>{transcript}</p>} */}
 
-      <div className="flex items-center w-full">
+      <div className="">
         {isRecording ? (
           <button
             onClick={handleToggleRecording}
-            className="mt-10 rounded-full w-10 h-10 m-auto flex items-center justify-center bg-red-500 hover:bg-red-600"
+            className="mt-10 rounded-full w-8 h-8 m-auto flex items-center justify-center bg-red-500 hover:bg-red-600 animate-pulse"
           >
             <Pause />
           </button>
         ) : (
           <button
             onClick={handleToggleRecording}
-            className="mt-10 rounded-full w-10 h-10 m-auto flex items-center justify-center bg-blue-500 hover:bg-blue-600"
+            className="mt-10 rounded-full w-8 h-8 m-auto flex items-center justify-center bg-blue-500 hover:bg-blue-600"
           >
             <Mic />
           </button>
