@@ -67,18 +67,18 @@ export default function RecordingView() {
 
       {/* {transcript && <p>{transcript}</p>} */}
 
-      <div className="">
+      <div className="relative  p-0 m-0">
         {isRecording ? (
           <button
             onClick={handleToggleRecording}
-            className="mt-10 rounded-full w-8 h-8 m-auto flex items-center justify-center bg-red-500 hover:bg-red-600 animate-pulse"
+            className="  rounded-full w-8 h-8 m-auto flex items-center justify-center bg-red-500 hover:bg-red-600 animate-pulse"
           >
             <Pause />
           </button>
         ) : (
           <button
             onClick={handleToggleRecording}
-            className="mt-10 rounded-full w-8 h-8 m-auto flex items-center justify-center bg-blue-500 hover:bg-blue-600"
+            className="  p-0 m-0 rounded-full w-8 h-8   flex items-center justify-center bg-blue-500 hover:bg-blue-600"
           >
             <Mic />
           </button>
