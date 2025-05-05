@@ -3,13 +3,14 @@ import { authOptions } from "../auth/[...nextauth]/route";
 import connectMongoDB from "../../../../lib/mongodb";
 import { ContentModel } from "../../../../lib/models/content";
 import { UserModel } from "../../../../lib/models/user";
+import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
   const session = await getServerSession(authOptions);
   console.log("Session in api/history", session);
 
   if (!session) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
   await connectMongoDB();

@@ -17,6 +17,8 @@ import { MessagesList } from "./MessagesList";
 import { BoardSetting } from "./BoardSetting";
 import { button, useControls } from "leva";
 import { useAITeacher } from "../hooks/useAITeacher";
+// -----------------------
+
 import Navbar from "./Navbar";
 import ContentModal from "../pages/ContentModal";
 
@@ -31,6 +33,7 @@ function Experience() {
       <div className="z-10 md:justify-center fixed bottom-4 left-4 right-4 flex gap-3 flex-wrap justify-stretch">
         <TypingBox />
       </div>
+
       <Canvas camera={{ position: [0, 0, 0.0001] }}>
         <CameraManager />
 

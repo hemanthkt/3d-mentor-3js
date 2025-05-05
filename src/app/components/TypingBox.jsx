@@ -1,20 +1,30 @@
 import { useState } from "react";
 import { useAITeacher } from "../hooks/useAITeacher";
+import { useTrailTexture } from "@react-three/drei";
+import { useTranscriptStore } from "../hooks/useTranscriptStore";
+import RecordingView from "./RecordingView";
 
 export const TypingBox = () => {
   const askAI = useAITeacher((state) => state.askAI);
   const loading = useAITeacher((state) => state.loading);
-  const [question, setQuestion] = useState("");
+  const { transcript } = useTranscriptStore();
+  const setTranscript = useTranscriptStore((state) => state.setTranscript);
+  // const [question, setQuestion] = useState("");
 
   const ask = () => {
-    askAI(question);
-    setQuestion("");
+    askAI(transcript);
+    setTranscript("");
   };
   return (
-    <div className="z-10 max-w-[600px] flex space-y-6 flex-col bg-gradient-to-tr  from-slate-300/30 via-gray-400/30 to-slate-600-400/30 p-4  backdrop-blur-md rounded-xl border-slate-100/30 border">
-      <div>
-        <h2 className="text-white font-bold text-xl">Expert Session</h2>
-        <p className="text-white/65">Ask your guide a question</p>
+    <div className="z-10 relative max-w-[600px] flex space-y-6 flex-col bg-gradient-to-tr  from-slate-300/30 via-gray-400/30 to-slate-600-400/30 p-4  backdrop-blur-md rounded-xl border-slate-100/30 border">
+      <div className="relative">
+        <div>
+          <h2 className="text-white font-bold text-xl">Expert Session</h2>
+          <p className="text-white/65">Ask your guide a question</p>
+          <div className="absolute top-0 right-0 p-0 m-0">
+            <RecordingView />
+          </div>
+        </div>
       </div>
 
       {loading ? (
@@ -29,14 +39,15 @@ export const TypingBox = () => {
           <input
             className="focus:outline focus:outline-white/80 flex-grow bg-slate-800/60 p-2 px-4 rounded-full text-white placeholder:text-white/50 shadow-inner shadow-slate-900/60"
             placeholder="Ask a question"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            value={transcript}
+            onChange={(e) => setTranscript(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 ask();
               }
             }}
           />
+
           <button
             className="bg-slate-100/20 p-2 px-6 rounded-full text-white"
             onClick={ask}
