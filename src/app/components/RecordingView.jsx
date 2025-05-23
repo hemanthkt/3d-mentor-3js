@@ -3,16 +3,15 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useTranscriptStore } from "../hooks/useTranscriptStore";
 
-// @ts-ignore
-window.webkitSpeechRecognition =
-  window.webkitSpeechRecognition || window.SpeechRecognition;
-
 export default function RecordingView() {
   const setTranscript = useTranscriptStore((state) => state.setTranscript);
   const [isRecording, setIsRecording] = useState(false);
   const [recordingComplete, setRecordingComplete] = useState(false);
   // const [transcript, setTranscript] = useState("");
-
+  if (global?.window) {
+    window.webkitSpeechRecognition =
+      window.webkitSpeechRecognition || window.SpeechRecognition;
+  }
   const recognitionRef = useRef(null);
 
   const startRecording = () => {
