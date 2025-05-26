@@ -1,10 +1,6 @@
 "use client";
-import Image from "next/image";
 import Experience from "./components/Experience";
 import Navbar from "./components/Navbar";
-import { NextAuthProvider } from "./Providers";
-import TestContentPost from "./components/TestComponent";
-import ContentModal from "./pages/ContentModal";
 
 export default function Home() {
   return (
